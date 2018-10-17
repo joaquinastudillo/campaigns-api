@@ -17,7 +17,6 @@ class CreateCampaignStoreTable extends Migration
             $table->increments('id');
             $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
