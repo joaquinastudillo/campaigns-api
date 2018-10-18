@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Campaign extends Model
 {
     protected $table = 'campaigns';
-    protected $fillable = ['name', 'description', 'status', 'status'];
+    protected $fillable = ['name', 'description', 'status'];
     public $timestamps = false; 
 
     public function stores(){

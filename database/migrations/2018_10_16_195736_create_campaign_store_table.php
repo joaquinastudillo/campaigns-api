@@ -15,9 +15,17 @@ class CreateCampaignStoreTable extends Migration
     {
         Schema::create('campaign_store', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('description');
+            $table->integer('campaign_id')->unsigned();
+            $table->integer('store_id')->unsigned();
+        });
+
+        Schema::table('campaign_store', function (Blueprint $table) {
             $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
         });
+
+        
     }
 
     /**

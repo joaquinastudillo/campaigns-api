@@ -18,7 +18,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('brand');
             $table->text('description');
-            $table->timestamps();
         });
     }
 

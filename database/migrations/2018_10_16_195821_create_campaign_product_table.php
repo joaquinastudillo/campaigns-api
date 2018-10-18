@@ -15,10 +15,16 @@ class CreateCampaignProductTable extends Migration
     {
         Schema::create('campaign_product', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('description');
+            $table->integer('campaign_id')->unsigned();
+            $table->integer('product_id')->unsigned();
+        });
+
+        Schema::table('campaign_product', function (Blueprint $table) {
             $table->foreign('campaign_id')->references('id')->on('campaigns')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->timestamps();
         });
+
     }
 
     /**
