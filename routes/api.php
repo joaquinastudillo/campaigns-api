@@ -18,3 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('campaigns', 'CampaignController');
+Route::resource('stores', 'StoreController');
+Route::resource('products', 'ProductController');
+
+Route::get('campaigns/{campaign}/stores', 'CampaignStoreController@index');

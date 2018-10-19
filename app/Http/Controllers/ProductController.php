@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Campaign;
-use App\Http\Resources\Campaign as CampaignResource;
+use App\Product;
+use App\Http\Resources\Product as ProductResource;
 
-class CampaignController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class CampaignController extends Controller
      */
     public function index()
     {
-        return CampaignResource::collection(Campaign::all());
+        return ProductResource::collection(Product::all());
     }
 
     /**
@@ -47,7 +47,7 @@ class CampaignController extends Controller
      */
     public function show($id)
     {
-        return new CampaignResource(Campaign::find($id));
+        //
     }
 
     /**
