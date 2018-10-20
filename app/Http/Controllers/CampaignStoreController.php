@@ -12,4 +12,9 @@ class CampaignStoreController extends Controller
         $stores = Campaign::find($campaignId)->stores()->get();
         return StoreResource::collection($stores);
     }
+
+    public function show($campaignId, $storeId){
+        $stores = Campaign::find($campaignId)->stores()->where('store_id', $storeId)->get();
+        return new StoreResource($stores);
+    }
 }

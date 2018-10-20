@@ -17,8 +17,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// general routes
 Route::resource('campaigns', 'CampaignController');
 Route::resource('stores', 'StoreController');
 Route::resource('products', 'ProductController');
 
+//specifics routes for stores and products related to one campaign
+
+//for campaign-stores
 Route::get('campaigns/{campaign}/stores', 'CampaignStoreController@index');
+Route::get('campaigns/{campaign}/stores/{store}', 'CampaignStoreController@show');
+
+//for campaign-products
+Route::get('campaigns/{campaign}/products', 'CampaignProductController@index');
+Route::get('campaigns/{campaign}/products/{product}', 'CampaignProductController@show');
