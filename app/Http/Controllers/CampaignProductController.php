@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Campaign;
+use App\CampaignProduct;
 use App\Http\Resources\Product as ProductResource;
 
 class CampaignProductController extends Controller
@@ -17,4 +18,17 @@ class CampaignProductController extends Controller
         $products = Campaign::find($campaignId)->products()->where('product_id', $productId)->get();
         return new ProductResource($products);
     }
+
+    public function store(Request $request){
+        $newRelationship = CampaignProduct::create($request->all());
+        return new ProductResource($newRelationship);
+    }
+
+    public function destroy($id){
+        $relationship = CampaignProduct::find($id);
+        if($relationship->delete()) {
+            return new ProductResource($relationship);
+        }
+    }
 }
+

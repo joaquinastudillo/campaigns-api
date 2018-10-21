@@ -26,8 +26,12 @@ Route::resource('products', 'ProductController');
 
 //for campaign-stores
 Route::get('campaigns/{campaign}/stores', 'CampaignStoreController@index');
+Route::post('campaigns/stores/new', 'CampaignStoreController@store');
+Route::post('campaigns/stores/delete/{id}', 'CampaignStoreController@destroy');
 Route::get('campaigns/{campaign}/stores/{store}', 'CampaignStoreController@show');
 
 //for campaign-products
 Route::get('campaigns/{campaign}/products', 'CampaignProductController@index');
+Route::post('campaigns/products/new', 'CampaignProductController@store');
+Route::post('campaigns/products/delete/{id}', 'CampaignProductController@destroy');
 Route::get('campaigns/{campaign}/products/{product}', 'CampaignProductController@show');
