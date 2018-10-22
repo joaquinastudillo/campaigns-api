@@ -36,7 +36,8 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $store = Store::create($request->all());
+        return new StoreResource($store);
     }
 
     /**
@@ -70,7 +71,10 @@ class StoreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $store = Store::find($id);
+        if($store->update($request->all())){
+            return new StoreResource($store);
+        }
     }
 
     /**
@@ -81,6 +85,9 @@ class StoreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $store = Store::find($id);
+        if($store->delete()){
+            return new StoreResource($store);
+        }
     }
 }

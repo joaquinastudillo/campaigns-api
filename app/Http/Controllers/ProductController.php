@@ -36,7 +36,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::create($request_>all());
+        return new ProductResource($product);
     }
 
     /**
@@ -47,7 +48,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return new ProductResource(Product::find($id));
     }
 
     /**
@@ -70,7 +71,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::find($id);
+        if($product->update($request->all())){
+            return new ProductResource($product);
+        }
     }
 
     /**
@@ -81,6 +85,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if($product->delete()){
+            return new ProductResource($product);
+        }
     }
 }

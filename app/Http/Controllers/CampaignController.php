@@ -36,7 +36,8 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $campaign = Campaign::create($request->all());
+        return new CampaignResource($campaign);
     }
 
     /**
@@ -70,7 +71,10 @@ class CampaignController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $campaign = Campaign::find($id);
+        if($campaign->update($request->all())){
+            return new CampaignResource($campaign);
+        }
     }
 
     /**
@@ -81,6 +85,9 @@ class CampaignController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $campaign = Campaign::find($id);
+        if($campaign->delete()){
+            return new CampaignResource($campaign);
+        }
     }
 }
