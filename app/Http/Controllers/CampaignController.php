@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Campaign;
 use App\Http\Resources\Campaign as CampaignResource;
+use App\Http\Resources\ErrorResource as ErrorResource;
 
 class CampaignController extends Controller
 {
@@ -36,7 +37,15 @@ class CampaignController extends Controller
      */
     public function store(Request $request)
     {
-        $campaign = Campaign::create($request->all());
+        //commented code for future validations
+        /*try{
+            $campaign = Campaign::create($request->all()) ;
+            return new CampaignResource($campaign);
+        }catch(\Exception $exception){
+            $error = ['error' => ["message" => "error creating the new campaign"]];
+            return new ErrorResource($error);
+        }*/
+        $campaign = Campaign::create($request->all()) ;
         return new CampaignResource($campaign);
     }
 
