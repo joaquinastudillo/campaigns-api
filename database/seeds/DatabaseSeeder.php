@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductsTableSeeder::class);
         $this->call(CampaignStoreTableSeeder::class);
         $this->call(CampaignProductTableSeeder::class);
+        //required before any mnigration, same for users
         $this->call(RolesTableSeeder::class);
     }
 }
