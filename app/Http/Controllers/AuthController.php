@@ -11,8 +11,8 @@ class AuthController extends Controller
 
         $request->request->add([
             'grant_type' => 'password',
-            'client_id' => config('services.passport.client_id'),
-            'client_secret' => config('services.passport.client_secret'),
+            'client_id' => 8,
+            'client_secret' => 'Zr2njzLIoQEOri0oTYNwEXLW715N7WtirFe9NXmk',
             'username' => $request->username,
             'password' => $request->password,
         ]);
